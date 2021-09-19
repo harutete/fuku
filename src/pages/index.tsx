@@ -3,16 +3,12 @@ import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
-import firebase from '../libs/firebase/initializeApp'
-import { isLoggedIn } from '../libs/firebase/Auth'
+import { getAppAuth } from '../libs/firebase/auth'
 
 const Home: NextPage = () => {
   const router = useRouter()
   useEffect(() => {
-    const firebaseApp = firebase
-    if (!isLoggedIn) {
-      router.push('/login')
-    }
+    console.log('aaa', getAppAuth())
   }, [])
   return (
     <div>

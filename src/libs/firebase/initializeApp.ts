@@ -1,5 +1,4 @@
-import firebase, { initializeApp } from 'firebase/app'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { initializeApp, getApps } from 'firebase/app'
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FB_API_KEY,
@@ -10,6 +9,10 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FB_APP_ID
 }
 
-const app = initializeApp(firebaseConfig)
+export const getFirebaseApp = () => {
+  if (typeof 'window' === 'undefined') {
+    return
+  }
 
-export default firebase
+  return getApps()[0] || initializeApp(firebaseConfig)
+}
