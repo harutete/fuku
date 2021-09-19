@@ -1,4 +1,4 @@
-import { initializeApp } from 'firebase/app'
+import firebase, { initializeApp } from 'firebase/app'
 
 const { FB_API_KEY, FB_AUTH_DOMAIN, FB_PROJECT_ID, FB_STORAGE_BUCKET, FB_MESSAGING_SENDER_ID, FB_APP_ID } = process.env
 
@@ -11,4 +11,9 @@ const firebaseConfig = {
   appId: FB_APP_ID
 }
 
-const app = initializeApp(firebaseConfig)
+// initializeが毎回走らないようにする
+if (!firebase.getApps.length) {
+  initializeApp(firebaseConfig)
+}
+
+export default firebase
