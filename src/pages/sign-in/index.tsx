@@ -8,7 +8,10 @@ import { useInput } from '../../hooks/useInput'
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
-  const handleSignIn = () => {
+
+  // TODO 型定義
+  const handleSignIn = (event: any) => {
+    event.preventDefault()
     createAppAccount({ email, password })
   }
 
@@ -19,16 +22,16 @@ const Login: NextPage = () => {
       </Head>
 
       <main>
-        <h1>Login</h1>
+        <h1>Sign in</h1>
         <div>
-          <form>
+        <form onSubmit={handleSignIn}>
             <div>
               <input type="text" placeholder="email" value={email} onChange={handleSetEmail} />
             </div>
             <div>
               <input type="password" placeholder="password" value={password} onChange={handleSetPassword} />
             </div>
-            <button type="submit" onSubmit={handleSignIn}>Login</button>
+            <input type="submit" value="Sign in" />
           </form>
         </div>
       </main>
