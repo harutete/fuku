@@ -1,17 +1,16 @@
+import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 
 import { loginApp } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
-import React from 'react'
 
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
 
-  // TODO 型定義
-  const handleLogin = (event: any) => {
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     loginApp({ email, password })
   }
