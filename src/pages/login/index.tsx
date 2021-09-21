@@ -2,6 +2,7 @@ import React from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { loginApp } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
@@ -9,10 +10,15 @@ import { useInput } from '../../hooks/useInput'
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
+  const router = useRouter()
 
-  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    loginApp({ email, password })
+    const response = await loginApp({ email, password })
+
+    if (response) {
+      router.push('/')
+    }
   }
 
   return (

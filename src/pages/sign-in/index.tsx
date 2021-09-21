@@ -1,7 +1,7 @@
-import type { FormEventHandler } from 'react'
 import type { NextPage } from 'next'
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 import { createAppAccount } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
@@ -9,10 +9,15 @@ import { useInput } from '../../hooks/useInput'
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
+  const router = useRouter()
 
-  const handleSignIn = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    createAppAccount({ email, password })
+    const response = await createAppAccount({ email, password })
+
+    if (response) {
+      router.push('/')
+    }
   }
 
   return (

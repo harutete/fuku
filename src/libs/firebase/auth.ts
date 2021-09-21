@@ -19,6 +19,7 @@ export const loginApp = async ({ email, password }: { email: string, password: s
   const currentAuth = getAppAuth()
   try {
     const userCredential = await signInWithEmailAndPassword(currentAuth, email, password)
+    console.log({userCredential})
     return userCredential.user
   } catch(error) {
     console.error(error)
