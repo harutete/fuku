@@ -34,6 +34,7 @@ const Login: NextPage = () => {
       <main>
         <h1>Login</h1>
         <Form onSubmit={handleLogin} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
+        <p><Link href="/sign-in">Create account?</Link></p>
       </main>
     </div>
   )

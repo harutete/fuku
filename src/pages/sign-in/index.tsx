@@ -6,6 +6,8 @@ import { useRouter } from 'next/router'
 import { createAppAccount } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 
+import { Form } from '../../components/organisms/Form'
+
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
@@ -28,17 +30,7 @@ const Login: NextPage = () => {
 
       <main>
         <h1>Sign in</h1>
-        <div>
-        <form onSubmit={handleSignIn}>
-            <div>
-              <input type="text" placeholder="email" value={email} onChange={handleSetEmail} />
-            </div>
-            <div>
-              <input type="password" placeholder="password" value={password} onChange={handleSetPassword} />
-            </div>
-            <input type="submit" value="Sign in" />
-          </form>
-        </div>
+        <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
       </main>
     </div>
   )
