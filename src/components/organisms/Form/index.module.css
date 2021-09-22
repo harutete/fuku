@@ -1,0 +1,37 @@
+.formWrapper {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  width: 85%;
+  max-width: 500px;
+  margin: auto;
+  padding: 16px;
+}
+
+.formList {
+  list-style: none;
+  width: 85%;
+  margin: auto;
+}
+
+.formList li + li {
+  margin-top: 16px;
+}
+
+.buttonSubmitWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.formList li input {
+  width: 100%;
+  padding: 8px;
+}
+
+.buttonSubmit {
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  width: 85%;
+  padding: 8px;
+}
