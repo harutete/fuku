@@ -1,0 +1,13 @@
+.footer {
+  background-color: #666666;
+  padding: 8px;
+}
+
+.footerContent {
+  display: flex;
+  justify-content: center;
+}
+
+.textCopyright {
+  color: #ffffff;
+}

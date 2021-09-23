@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import type { AppProps } from 'next/app'
 
 import { AuthContext, AuthProvider } from '../libs/context/AuthProvider'
+import { DefaultLayout } from '../components/templates/DefaultLayout'
 
 import '../styles/globals.css'
 
@@ -29,7 +30,9 @@ const AppInit = () => {
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <AuthProvider>
     <AppInit />
-    <Component {...pageProps} />
+      <DefaultLayout>
+        <Component {...pageProps} />
+      </DefaultLayout>
   </AuthProvider>
 )
 
