@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { loginApp } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 
+import { Heading01 } from '../../components/atoms/Heading01'
 import { Form } from '../../components/organisms/Form'
 
 import styles from './index.module.css'
@@ -26,17 +27,16 @@ const Login: NextPage = () => {
   }
 
   return (
-    <div>
+    <>
       <Head>
         <title>Login</title>
       </Head>
-
-      <main>
-        <h1>Login</h1>
+      <div>
+        <Heading01 text="Login" />
         <Form onSubmit={handleLogin} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
         <p><Link href="/sign-in">Create account?</Link></p>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }
 
