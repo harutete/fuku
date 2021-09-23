@@ -1,20 +1,34 @@
+import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
+import { getAppStorageList } from '../libs/firebase/storage'
+
 const Home: NextPage = () => {
+  const [list, setList] = useState<string[]>([])
+  useEffect(() => {
+    const getImageList = async () => {
+      const imageList = await getAppStorageList()
+      return setList(imageList ? imageList : [])
+    }
+    getImageList()
+  }, [])
+
   return (
-    <div>
+    <>
       <Head>
         <title>Fuku</title>
       </Head>
 
-      <main>
+      <div>
         <h1>Fuku</h1>
         <ul>
-          <li>thumbnail</li>
+        {list.length && list.map((item, index) =>
+          <li key={index}><img src={item} / ></li>
+        )}
         </ul>
-      </main>
-    </div>
+      </div>
+    </>
   )
 }
 
