@@ -24,7 +24,7 @@ const Home: NextPage = () => {
         <h1>Fuku</h1>
         <ul>
         {list.length && list.map((item, index) =>
-          <li key={index}><img src={item} / ></li>
+          <li key={index}><img src={item} /></li>
         )}
         </ul>
       </div>
