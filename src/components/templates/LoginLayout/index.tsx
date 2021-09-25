@@ -6,7 +6,7 @@ import { Footer } from '../../organisms/Footer'
 
 import styles from  './index.module.css'
 
-interface Props {
+type Props = {
   children: React.ReactNode
 }
 

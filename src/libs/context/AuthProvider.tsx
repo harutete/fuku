@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import { UserState } from '../../models/auth'
 import { getAppAuth } from '../../libs/firebase/auth'
 
-interface Props {
+type Props = {
   children: React.ReactNode
 }
 

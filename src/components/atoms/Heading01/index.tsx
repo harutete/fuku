@@ -1,6 +1,6 @@
 import styles from  './index.module.css'
 
-interface Props {
+type Props = {
   text: string
 }
 
