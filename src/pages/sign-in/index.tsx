@@ -33,7 +33,7 @@ const SignIn: NextPage = () => {
       </Head>
       <div className={styles.signIn}>
         <Heading01 text="Sign in" />
-        <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
+        <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Sign in" />
       </div>
     </>
   )
