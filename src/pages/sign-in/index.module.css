@@ -1,4 +1,4 @@
-.login {
+.signIn {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -8,8 +8,4 @@
   max-width: 500px;
   margin: auto;
   padding: 16px;
-}
-
-.signInLink {
-  text-align: center;
 }

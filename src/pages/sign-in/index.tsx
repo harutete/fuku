@@ -9,6 +9,8 @@ import { useInput } from '../../hooks/useInput'
 import { Heading01 } from '../../components/atoms/Heading01'
 import { Form } from '../../components/organisms/Form'
 
+import styles from './index.module.css'
+
 const Login: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
@@ -28,8 +30,7 @@ const Login: NextPage = () => {
       <Head>
         <title>Sign in</title>
       </Head>
-
-      <div>
+      <div className={styles.signIn}>
         <Heading01 text="Sign in" />
         <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
       </div>

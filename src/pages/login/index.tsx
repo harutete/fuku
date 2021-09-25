@@ -31,10 +31,10 @@ const Login: NextPage = () => {
       <Head>
         <title>Login</title>
       </Head>
-      <div>
+      <div className={styles.login}>
         <Heading01 text="Login" />
         <Form onSubmit={handleLogin} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Login" />
-        <p><Link href="/sign-in">Create account?</Link></p>
+        <p className={styles.signInLink}><Link href="/sign-in">Create account?</Link></p>
       </div>
     </>
   )
