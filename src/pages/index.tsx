@@ -4,6 +4,8 @@ import Head from 'next/head'
 
 import { getAppStorageList } from '../libs/firebase/storage'
 
+import { ThumbnailList } from '../components/organisms/ThumbnailList'
+
 const Home: NextPage = () => {
   const [list, setList] = useState<string[]>([])
   useEffect(() => {
@@ -22,11 +24,7 @@ const Home: NextPage = () => {
 
       <div>
         <h1>Fuku</h1>
-        <ul>
-        {list.length && list.map((item, index) =>
-          <li key={index}><img src={item} /></li>
-        )}
-        </ul>
+        <ThumbnailList items={list} />
       </div>
     </>
   )

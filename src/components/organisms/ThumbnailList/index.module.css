@@ -1,0 +1,13 @@
+.thumbnailList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -8px;
+}
+.thumbnailList li {
+  margin: 8px 8px 0 0;
+}
+.thumbnailList li img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}

@@ -1,4 +1,4 @@
-import { getStorage, ref, listAll } from 'firebase/storage'
+import { getStorage, ref, listAll, getDownloadURL } from 'firebase/storage'
 import { getFirebaseApp } from './initializeApp'
 
 export const getAppStorage = () =>  getStorage(getFirebaseApp())
@@ -8,7 +8,7 @@ export const getAppStorageList = async () => {
 
   try {
     const listResponse = await listAll(storageListRef)
-    return listResponse.items.map((item) => `gs://${item.bucket}/${item.fullPath}`)
+    return await Promise.all(listResponse.items.map(async (item) => await getDownloadURL(item)))
   } catch(error) {
     console.error(error)
   }
