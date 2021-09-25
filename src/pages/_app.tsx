@@ -1,11 +1,20 @@
 import { useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
+import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
 
 import { AuthContext, AuthProvider } from '../libs/context/AuthProvider'
 import { DefaultLayout } from '../components/templates/DefaultLayout'
 
 import '../styles/globals.css'
+
+type NextPageWithLayout = NextPage & {
+  getLayout?: (page: React.ReactElement) => React.ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
 
 const AppInit = () => {
   const authContext = useContext(AuthContext)
@@ -27,13 +36,17 @@ const AppInit = () => {
   return null
 }
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <AuthProvider>
-    <AppInit />
-      <DefaultLayout>
+const MyApp = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout ?? ((page) => page)
+
+  return (
+    <AuthProvider>
+      <AppInit />
+      {getLayout(
         <Component {...pageProps} />
-      </DefaultLayout>
-  </AuthProvider>
+      )}
+    </AuthProvider>
 )
+}
 
 export default MyApp

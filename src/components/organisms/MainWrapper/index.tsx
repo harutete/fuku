@@ -5,7 +5,7 @@ interface Props {
 }
 
 export const MainWrapper: React.FC<Props> = ({ children }) => (
-  <main className={styles.main}>
+  <div className={styles.main}>
     {children}
-  </main>
+  </div>
 )

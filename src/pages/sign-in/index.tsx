@@ -7,11 +7,12 @@ import { createAppAccount } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 
 import { Heading01 } from '../../components/atoms/Heading01'
+import { LoginLayout } from '../../components/templates/LoginLayout'
 import { Form } from '../../components/organisms/Form'
 
 import styles from './index.module.css'
 
-const Login: NextPage = () => {
+const SignIn: NextPage = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
   const router = useRouter()
@@ -38,4 +39,10 @@ const Login: NextPage = () => {
   )
 }
 
-export default Login
+export default SignIn
+
+SignIn.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <LoginLayout>{page}</LoginLayout>
+  )
+}

@@ -1,0 +1,11 @@
+.wrapper {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.wrapper > .main {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}

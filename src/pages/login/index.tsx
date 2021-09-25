@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import { loginApp } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 
+import { LoginLayout } from '../../components/templates/LoginLayout'
 import { Heading01 } from '../../components/atoms/Heading01'
 import { Form } from '../../components/organisms/Form'
 
@@ -41,3 +42,9 @@ const Login: NextPage = () => {
 }
 
 export default Login
+
+Login.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <LoginLayout>{page}</LoginLayout>
+  )
+}
