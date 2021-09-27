@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const MainWrapper: React.FC<Props> = ({ children }) => (
-  <div className={styles.main}>
+  <main className={styles.main}>
     {children}
-  </div>
+  </main>
 )

@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Header } from '../../organisms/Header'
 import { MainWrapper } from '../../organisms/MainWrapper'
 import { Footer } from '../../organisms/Footer'
