@@ -24,7 +24,7 @@ const Home: NextPage = () => {
 
       <div>
         <h1>Fuku</h1>
-        <ThumbnailList items={list} />
+        {list.length && <ThumbnailList items={list} />}
       </div>
     </>
   )
