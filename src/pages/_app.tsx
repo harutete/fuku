@@ -17,17 +17,19 @@ type AppPropsWithLayout = AppProps & {
 }
 
 const AppInit = () => {
-  const authContext = useContext(AuthContext)
+  const { user, getAppAuth } = useContext(AuthContext)
   const router = useRouter()
 
   useEffect(() => {
+    const { currentUser } = getAppAuth
+
     // ログイン済みの状態でログイン、サインインページに遷移した場合はTOPページにリダイレクトする
-    if ((router.pathname === '/login' || router.pathname === '/sign-in') && authContext.user !== null) {
+    if ((router.pathname === '/login' || router.pathname === '/sign-in') && currentUser !== null) {
       router.push('/')
     }
 
     // 未ログインの状態でTOPページに遷移した場合はログインページにリダイレクトする
-    if (router.pathname === '/' && authContext.user === null) {
+    if (router.pathname === '/' && currentUser=== null) {
       router.push('/login')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

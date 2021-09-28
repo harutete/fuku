@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 
 import { UserState } from '../../models/auth'
 import { getAppAuth } from '../../libs/firebase/auth'
+import { getApp } from '@firebase/app'
 
 type Props = {
   children: React.ReactNode
@@ -29,6 +30,6 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     }
   }, [])
   return (
-    <AuthContext.Provider value={user}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, getAppAuth: getAppAuth() }}>{children}</AuthContext.Provider>
   );
 };
