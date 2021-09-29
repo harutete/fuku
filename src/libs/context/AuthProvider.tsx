@@ -15,7 +15,7 @@ const initialState = {
 export const AuthContext = createContext<{ user: UserState | null }>(initialState)
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<{ user: UserState | null }>(initialState);
+  const [user, setUser] = useState<{ user: UserState | null, getAppAuth: () => void }>(initialState);
 
   useEffect(() => {
     const { currentUser } = getAppAuth()
