@@ -1,4 +1,5 @@
 import styles from  './index.module.css'
+
 type Props = {
   isLoggedIn: boolean
   handleLogout?: () => Promise<void>

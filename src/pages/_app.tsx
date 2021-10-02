@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
@@ -29,11 +29,12 @@ const AppInit = () => {
     }
 
     // 未ログインの状態でTOPページに遷移した場合はログインページにリダイレクトする
-    if (router.pathname === '/' && currentUser=== null) {
+    if (router.pathname === '/' && currentUser === null) {
       router.push('/login')
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [router.pathname])
 
   return null
 }
