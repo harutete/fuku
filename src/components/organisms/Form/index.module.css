@@ -20,8 +20,10 @@
 
 .buttonSubmit {
   cursor: pointer;
+  background-color: #325288;
   border: none;
   border-radius: 4px;
+  color: #ffffff;
   font-weight: bold;
   width: 100%;
   padding: 8px;
