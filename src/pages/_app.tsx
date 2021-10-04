@@ -17,7 +17,7 @@ type AppPropsWithLayout = AppProps & {
 }
 
 const AppInit = () => {
-  const { user, getAppAuth } = useContext(AuthContext)
+  const { getAppAuth } = useContext(AuthContext)
   const router = useRouter()
 
   useEffect(() => {
