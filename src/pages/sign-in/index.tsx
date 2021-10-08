@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import type { NextPageWithLayout } from '../_app'
 import { createAppAccount } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
+import { useDisplayErrorMessage } from '../../hooks/useDisplayErrorMessage'
 
 import { Heading01 } from '../../components/atoms/Heading01'
 import { LoginLayout } from '../../components/templates/LoginLayout'
@@ -13,12 +14,20 @@ import { Form } from '../../components/organisms/Form'
 import styles from './index.module.css'
 
 const SignIn: NextPageWithLayout = () => {
+  const { errorMessage, handleSetErrorMessage } = useDisplayErrorMessage('')
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
   const router = useRouter()
 
   const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    if (!email.length || !password.length) {
+      return handleSetErrorMessage('メールアドレスとパスワードを入力してください')
+    } else {
+      handleSetErrorMessage('')
+    }
+
     const response = await createAppAccount({ email, password })
 
     if (response) {
@@ -33,7 +42,7 @@ const SignIn: NextPageWithLayout = () => {
       </Head>
       <div className={styles.signIn}>
         <Heading01 text="Sign in" />
-        <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Sign in" />
+        <Form onSubmit={handleSignIn} email={email} handleSetEmail={handleSetEmail} password={password} handleSetPassword={handleSetPassword} submitValue="Sign in" errorMessage={errorMessage} />
       </div>
     </>
   )
