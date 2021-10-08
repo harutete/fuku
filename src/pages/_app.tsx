@@ -8,7 +8,7 @@ import { DefaultLayout } from '../components/templates/DefaultLayout'
 
 import '../styles/globals.css'
 
-type NextPageWithLayout = NextPage & {
+export type NextPageWithLayout = NextPage & {
   getLayout?: (page: React.ReactElement) => React.ReactNode
 }
 

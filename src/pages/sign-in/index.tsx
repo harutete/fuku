@@ -1,8 +1,8 @@
-import type { NextPage } from 'next'
 import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
+import type { NextPageWithLayout } from '../_app'
 import { createAppAccount } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 
@@ -12,7 +12,7 @@ import { Form } from '../../components/organisms/Form'
 
 import styles from './index.module.css'
 
-const SignIn: NextPage = () => {
+const SignIn: NextPageWithLayout = () => {
   const { value: email, handleSetValue: handleSetEmail } = useInput('')
   const { value: password, handleSetValue: handleSetPassword } = useInput('')
   const router = useRouter()
