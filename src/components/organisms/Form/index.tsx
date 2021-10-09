@@ -1,3 +1,5 @@
+import { ErrorMessage } from '../../atoms/ErrorMessage'
+
 import styles from  './index.module.css'
 
 type Props = {
@@ -7,10 +9,12 @@ type Props = {
   password: string;
   handleSetPassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
   submitValue: string
+  errorMessage: string
 }
 
-export const Form: React.FC<Props> = ({ onSubmit, email, handleSetEmail, password, handleSetPassword, submitValue }) => (
+export const Form: React.FC<Props> = ({ onSubmit, email, handleSetEmail, password, handleSetPassword, submitValue, errorMessage }) => (
   <form onSubmit={onSubmit}>
+    {!!errorMessage.length && <ErrorMessage text={errorMessage} />}
     <ul className={styles.formList}>
       <li>
         <input type="text" placeholder="email" value={email} onChange={handleSetEmail} />
