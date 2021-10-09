@@ -23,15 +23,16 @@ const SignIn: NextPageWithLayout = () => {
     event.preventDefault()
 
     if (!email.length || !password.length) {
-      return handleSetErrorMessage('メールアドレスとパスワードを入力してください')
+      return handleSetErrorMessage('メールアドレスとパスワードを入力してください。')
     } else {
       handleSetErrorMessage('')
     }
 
-    const response = await createAppAccount({ email, password })
-
-    if (response) {
+    try {
+      await createAppAccount({ email, password })
       router.push('/')
+    } catch(error) {
+      handleSetErrorMessage('もう一度入力してください。')
     }
   }
 
