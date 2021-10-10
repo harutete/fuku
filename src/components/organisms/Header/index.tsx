@@ -10,7 +10,7 @@ export const Header: React.FC<Props> = ({ isLoggedIn, handleLogout }) => (
     <div className={styles.headerContent}>
       <div className={styles.headerTitle}>Fu-cloud</div>
       {isLoggedIn &&
-        <div className={styles.logoutButton} onClick={handleLogout}>Logout</div>
+        <button className={styles.logoutButton} onClick={handleLogout}>Logout</button>
       }
     </div>
   </header>
