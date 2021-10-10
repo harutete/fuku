@@ -13,8 +13,6 @@ import { Heading01 } from '../../components/atoms/Heading01'
 import { Form } from '../../components/organisms/Form'
 
 import styles from './index.module.css'
-import { User } from '@firebase/auth'
-import { FirebaseError } from '@firebase/util'
 
 const Login: NextPageWithLayout = () => {
   const { errorMessage, handleSetErrorMessage } = useDisplayErrorMessage('')
@@ -35,6 +33,7 @@ const Login: NextPageWithLayout = () => {
       await loginApp({ email, password })
       router.push('/')
     } catch(error) {
+      console.error(error)
       handleSetErrorMessage('メールアドレスかパスワードが正しくありません。もう一度入力してください。')
     }
   }
