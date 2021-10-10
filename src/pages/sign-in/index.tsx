@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 import type { NextPageWithLayout } from '../_app'
-import { signUpApp } from '../../libs/firebase/auth'
+import { signInApp } from '../../libs/firebase/auth'
 import { useInput } from '../../hooks/useInput'
 import { useDisplayErrorMessage } from '../../hooks/useDisplayErrorMessage'
 
@@ -29,7 +29,7 @@ const SignIn: NextPageWithLayout = () => {
     }
 
     try {
-      await signUpApp({ email, password })
+      await signInApp({ email, password })
       router.push('/')
     } catch(error) {
       handleSetErrorMessage('もう一度入力してください。')
