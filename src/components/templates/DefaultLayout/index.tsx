@@ -15,13 +15,17 @@ type Props = {
 export const DefaultLayout: React.FC<Props> = ({ children }) => {
   const router = useRouter()
   const handleLogoutApp = async () => {
-    await logoutApp()
-    router.push('/login')
+    try {
+      await logoutApp()
+      router.push('/login')
+    } catch(error) {
+      console.error(error)
+    }
   }
 
   return (
     <div className={styles.wrapper}>
-      <Header isLoggedIn={true} handleLogout={handleLogoutApp()} />
+      <Header isLoggedIn={true} handleLogout={handleLogoutApp} />
       <MainWrapper>{children}</MainWrapper>
       <Footer />
     </div>

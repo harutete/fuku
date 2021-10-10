@@ -1,4 +1,3 @@
-import { FirebaseError } from '@firebase/util'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 
 import { getFirebaseApp } from './initializeApp'
@@ -17,10 +16,5 @@ export const loginApp = async ({ email, password }: { email: string, password: s
 
 export const logoutApp = async () => {
   const currentAuth = getAppAuth()
-  try {
-    await signOut(currentAuth)
-  } catch(error) {
-    console.error(error)
-    return error as FirebaseError
-  }
+  return await signOut(currentAuth)
 }
