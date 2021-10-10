@@ -4,7 +4,7 @@ import { getFirebaseApp } from './initializeApp'
 
 export const getAppAuth = () => getAuth(getFirebaseApp())
 
-export const createAppAccount = async ({ email, password }: { email: string, password: string }) => {
+export const signUpApp = async ({ email, password }: { email: string, password: string }) => {
   const currentAuth = getAppAuth()
   return await createUserWithEmailAndPassword(currentAuth, email, password)
 }
