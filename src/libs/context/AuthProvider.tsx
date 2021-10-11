@@ -1,34 +1,27 @@
-import React, { createContext, useState, useEffect } from 'react'
+import { User } from '@firebase/auth'
+import React, { createContext, useState } from 'react'
 
-import { UserState } from '../../models/auth'
-import { getAppAuth } from '../../libs/firebase/auth'
+type AuthContextType = {
+  user: User | null
+  handleSetUser?: (user: User | null) => void
+}
 
 type Props = {
   children: React.ReactNode
 }
 
 const initialState = {
-  user: null
+  user: null,
 }
 
-export const AuthContext = createContext<{ user: UserState | null }>(initialState)
+export const AuthContext = createContext<AuthContextType>(initialState)
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<{ user: UserState | null }>(initialState);
-
-  useEffect(() => {
-    const { currentUser } = getAppAuth()
-
-    if (currentUser && user === null) {
-      setUser({
-        user: {
-          email: currentUser.email,
-          uid: currentUser.uid
-        }
-      })
-    }
-  }, [])
+  const [user, setUser] = useState<{ user: User | null }>(initialState);
+  const handleSetUser = (user: User | null) => {
+    setUser({ user })
+  }
   return (
-    <AuthContext.Provider value={{ user, getAppAuth }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, handleSetUser }}>{children}</AuthContext.Provider>
   );
 };
