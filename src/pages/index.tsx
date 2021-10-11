@@ -4,10 +4,13 @@ import Head from 'next/head'
 
 import { getAppStorageList } from '../libs/firebase/storage'
 
+import { Button } from '../components/atoms/Button'
 import { ThumbnailList } from '../components/organisms/ThumbnailList'
 import { useDisplayErrorMessage } from '../hooks/useDisplayErrorMessage'
 import { ErrorMessage } from '../components/atoms/ErrorMessage'
 import { FirebaseError } from '@firebase/util'
+
+import styles from  './index.module.css'
 
 const Home: NextPage = () => {
   const [list, setList] = useState<string[]>([])
@@ -36,7 +39,12 @@ const Home: NextPage = () => {
       <div>
         <h1>Fuku</h1>
         {!!errorMessage.length && <ErrorMessage text={errorMessage} />}
-        {!!list.length && <ThumbnailList items={list} />}
+        {!!list.length && !errorMessage.length && <ThumbnailList items={list} />}
+        {!!errorMessage.length &&
+          <div className={styles.returnButtonWrap}>
+            <Button href="/login" label="Login" />
+          </div>
+          }
       </div>
     </>
   )
