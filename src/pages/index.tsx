@@ -44,7 +44,7 @@ const Home: NextPage = () => {
           <div className={styles.returnButtonWrap}>
             <Button href="/login" label="Login" />
           </div>
-          }
+        }
       </div>
     </>
   )
