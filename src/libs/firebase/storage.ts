@@ -5,11 +5,6 @@ export const getAppStorage = () =>  getStorage(getFirebaseApp())
 
 export const getAppStorageList = async () => {
   const storageListRef = ref(getAppStorage(), 'images')
-
-  try {
-    const listResponse = await listAll(storageListRef)
-    return await Promise.all(listResponse.items.map(async (item) => await getDownloadURL(item)))
-  } catch(error) {
-    console.error(error)
-  }
+  const listResponse = await listAll(storageListRef)
+  return await Promise.all(listResponse.items.map(async (item) => await getDownloadURL(item)))
 }

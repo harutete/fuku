@@ -2,7 +2,6 @@ import React, { createContext, useState, useEffect } from 'react'
 
 import { UserState } from '../../models/auth'
 import { getAppAuth } from '../../libs/firebase/auth'
-import { getApp } from '@firebase/app'
 
 type Props = {
   children: React.ReactNode
@@ -15,12 +14,12 @@ const initialState = {
 export const AuthContext = createContext<{ user: UserState | null }>(initialState)
 
 export const AuthProvider: React.FC<Props> = ({ children }) => {
-  const [user, setUser] = useState<{ user: UserState | null, getAppAuth: () => void }>(initialState);
+  const [user, setUser] = useState<{ user: UserState | null }>(initialState);
 
   useEffect(() => {
     const { currentUser } = getAppAuth()
 
-    if (currentUser) {
+    if (currentUser && user === null) {
       setUser({
         user: {
           email: currentUser.email,
@@ -30,6 +29,6 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     }
   }, [])
   return (
-    <AuthContext.Provider value={{ user, getAppAuth: getAppAuth() }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, getAppAuth }}>{children}</AuthContext.Provider>
   );
 };
