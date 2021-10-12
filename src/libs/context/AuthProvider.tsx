@@ -21,9 +21,6 @@ export const AuthContext = createContext<AuthContextType>(initialState)
 export const AuthProvider: React.FC<Props> = ({ children }) => {
   const router = useRouter()
   const [user, setUser] = useState<{ user: User | null }>(initialState);
-  const handleSetUser = (user: User | null) => {
-    setUser({ user })
-  }
 
   useEffect(() => {
     const { currentUser } = getAppAuth()
@@ -39,6 +36,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
     }
 
     setUser({ user: currentUser })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.pathname])
 
   return (
