@@ -24,7 +24,7 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const { currentUser } = getAppAuth()
-    console.log({currentUser})
+
     // ログイン済みの状態でログイン、サインインページに遷移した場合はTOPページにリダイレクトする
     if ((router.pathname === '/login' || router.pathname === '/sign-in') && currentUser !== null) {
       router.push('/')
